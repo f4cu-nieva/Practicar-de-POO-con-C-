@@ -11,14 +11,6 @@ namespace sistema_de_biblioteca
     internal class Libreria
     {
 
-        public Libreria()//Constructor
-        {
-            //instancia del objecto libro y socio (Asociacion)
-            List<Libro> Libros = new List<Libro>();
-            List<Socio> Socios = new List<Socio>();
-
-        }
-
         public void MostrarLibros(List<Libro> Libros)
         {
             Console.WriteLine("Lista de libros:");

@@ -10,7 +10,7 @@ namespace sistema_de_biblioteca
     {
         static void Main(string[] args)
         {
-            Libreria libreri = new Libreria();
+            Libreria libreri = new Libreria(); // al no tener constructor, C# te crea una al momento de hacer new Libreria()
             List<Libro> libros = new List<Libro>();
             List<Socio> socios = new List<Socio>();
             string nombre_socio;
