@@ -49,6 +49,7 @@ namespace Inventario_de_productos
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            
             repo.Eliminar(1);
         }
 

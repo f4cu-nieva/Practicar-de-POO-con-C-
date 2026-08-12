@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;//libreria para usar funciones de mysql
 using Org.BouncyCastle.Asn1.IsisMtt;
 using System;
 using System.Collections.Generic;
@@ -12,41 +12,17 @@ namespace Inventario_de_productos
     internal class ProductoRepositorio
     {
         List<Producto> Productos = new List<Producto>();//instancio una lista de productos
-
-        //guardo en la variable conexion el texto de a que base de datos me quiero conectar
-        private string conexionDB = "Server=localhost;Database=inventario;Uid=appinventario;Pwd=inventario123;";
       
-        
-        /*
-        public bool ProbarConexion()//Metodo para probar la conexion a la base de datos
-        {
-            //control de la excepcion
-            try
-            {
-                MySqlConnection conexion = new MySqlConnection(conexionDB);//le indicamos a que base de datos referenciar
-                conexion.Open();//abro la base de datos
-                return true;//le indicamos que se conecto a la base de datos
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al conectar: " + ex.Message);
-                return false;
-            }
-        }
-         */
-        
-        
         public void Agregar(string nombre, decimal precio, int stock)//funcion para agregar un producto
         {
-            
-            MySqlConnection conexion = new MySqlConnection(conexionDB);
-            
+            //var => el compilador deduce que tipo de dato se devuelve y el var se lo puede interpretar como int, float, objecto, etc
+            var conexion = ConexioBBDD.ConexionBBDD();//llamo directamente el metodo sin instanciarlo con new gracias al static 
+
             try
             {
 
                 conexion.Open();//abro la base de datos
                 
-
                 //guardo la instruccion como string en la variable sql
                 string sqlComando = "INSERT INTO Productos (Nombre, Precio, Stock) VALUES (@nombre, @precio, @stock)";
                 //                                      instruccion, referencia a la base de datos
@@ -80,7 +56,7 @@ namespace Inventario_de_productos
 
             Productos.Clear();
 
-            MySqlConnection conexion = new MySqlConnection(conexionDB);
+            var conexion = ConexioBBDD.ConexionBBDD();
 
             try
             {
@@ -113,10 +89,9 @@ namespace Inventario_de_productos
             }
             finally
             {
-
                 conexion.Close();
-
             }
+            
             return Productos;
         }
          
@@ -128,8 +103,8 @@ namespace Inventario_de_productos
 
         public void Eliminar(int id)
         {
-            MySqlConnection conexion = new MySqlConnection(conexionDB);
-            
+            var conexion = ConexioBBDD.ConexionBBDD();
+
             try
             {
 
