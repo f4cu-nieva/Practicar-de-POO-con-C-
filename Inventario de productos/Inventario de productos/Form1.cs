@@ -30,27 +30,28 @@ namespace Inventario_de_productos
 
             ActualizarLista();
 
-
-            /*
-             //codigo para probar la conexion a la base de datos
-            bool estado = false;
-            estado = repo.ProbarConexion();
-
-            if (estado)
-            {
-                MessageBox.Show("Conexion a la base de datos exitosa!!!");
-            }
-            else
-            {
-                MessageBox.Show("ERROR!!!");
-            }
-             */
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            
-            repo.Eliminar(1);
+            //verificacion del seleccionamiento si esta vacio o no
+            if(dataProductos.CurrentCell == null)
+            {
+                MessageBox.Show("Seleccione un producto primero");
+                return;
+            }
+
+            //capturo lo que contiene en la celda id de la tabla, lo convierto a int y lo guardo en la variable id
+            int id =  Convert.ToInt32(dataProductos.CurrentRow.Cells["id"].Value);
+
+            //CurrentRow -> entro a la fila donde esta parado el cursor en ese mismo momento
+            //Cells[]-> selecciona toda la fila con las celdas una por cada columna, [] le indico que celda seleccionar exactamente 
+            //valie -> me devuelve el contenido de esa celda
+
+            repo.Eliminar(id);
+
+            ActualizarLista();
+
         }
 
         private void ActualizarLista()

@@ -121,7 +121,6 @@ namespace Inventario_de_productos
 
                 MessageBox.Show("Se elimino el producto correctamente!");
 
-                //MessageBox.Show(sql_eliminacion);
             }
             catch (Exception ex)
             {
