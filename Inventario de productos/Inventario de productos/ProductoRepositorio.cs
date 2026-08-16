@@ -96,9 +96,37 @@ namespace Inventario_de_productos
         }
          
 
-        public void Actualizar()
+        public void Actualizar(Producto p)
         {
-           
+            var conexion = ConexioBBDD.ConexionBBDD();
+            try
+            {
+
+                conexion.Open();
+
+                string modificar = "UPDATE Productos SET Nombre = @nombre, Precio = @precio, Stock = @stock WHERE ID = @id";
+
+                MySqlCommand comando = new MySqlCommand(modificar,conexion);
+
+                comando.Parameters.AddWithValue("@nombre", p.Nombre);
+                comando.Parameters.AddWithValue("@precio", p.Precio);
+                comando.Parameters.AddWithValue("@stock", p.Stock);
+                comando.Parameters.AddWithValue("@id", p.Id);
+
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("Producto modificado correctamente!");
+            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
         }
 
         public void Eliminar(int id)

@@ -21,7 +21,7 @@ namespace Inventario_de_productos
             MySqlConnection conexion = new MySqlConnection(conexionDB);
 
             return conexion;
-    }
+        }
 
     }
 }

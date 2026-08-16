@@ -116,10 +116,11 @@
             // dataProductos
             // 
             this.dataProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataProductos.Location = new System.Drawing.Point(146, 233);
+            this.dataProductos.Location = new System.Drawing.Point(195, 232);
             this.dataProductos.Name = "dataProductos";
-            this.dataProductos.Size = new System.Drawing.Size(526, 177);
+            this.dataProductos.Size = new System.Drawing.Size(429, 177);
             this.dataProductos.TabIndex = 8;
+            this.dataProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProductos_CellClick);
             // 
             // btnModificar
             // 
@@ -129,6 +130,7 @@
             this.btnModificar.TabIndex = 9;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
